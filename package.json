@@ -1,0 +1,17 @@
+{
+  "name": "lesson",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node --watch app"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "config": "^3.3.12",
+    "express": "^4.21.2",
+    "pg": "^8.14.1"
+  }
+}
