@@ -9,14 +9,18 @@ const addNewNew = async (req, res) => {
       author_id,
       status,
       published_at,
-      source,
-      lang_id,
+      source
     } = req.body;
     const newNew = await pool.query(
-      `INSERT INTO news (first_name ,last_name,email,password,role,is_active,created_at,interests,bookmarks)
-        VALUES ($1, $2,$3,$4,$5,$6,$7) RETURNING *
+      `INSERT INTO news (news_id,
+      category_id,
+      author_id,
+      status,
+      published_at,
+      source)
+        VALUES ($1, $2,$3,$4,$5,$6) RETURNING *
         `,
-      [news_id, category_id, author_id, status, published_at, source, lang_id]
+      [news_id, category_id, author_id, status, published_at, source]
     );
 
     res
@@ -56,12 +60,11 @@ const updateNewById = async (req, res) => {
     status,
     published_at,
     source,
-    lang_id,
   } = req.body;
   const id = req.params.id;
   await pool.query(
-    `UPDATE news set news_id=$1, category_id=$2,author_id=$3,status=$4,published_at=$5,source=$6,lang_id=$7 where id=${id}`,
-    [news_id, category_id, author_id, status, published_at, source, lang_id]
+    `UPDATE news set news_id=$1, category_id=$2,author_id=$3,status=$4,published_at=$5,source=$6 where id=${id}`,
+    [news_id, category_id, author_id, status, published_at, source]
   );
   const result = await pool.query(`SELECT * FROM news where id=${id}`);
 
